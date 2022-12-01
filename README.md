@@ -44,11 +44,10 @@ python index.py
 ```
 打开 localhost:8090 即可访问程序
 
-# 更好地运行本项目
-## 部署到云服务
+# 部署到云服务
 你如果有足够的money，可以租一台云服务器，部署上去，这样体验就很不错。
 
-## 部署到废旧手机
+# 部署到闲置手机
 我就是这样做的，我有一部废旧的安卓手机和一部闲置的iphone SE，然后我将程序部署上去了，这样白天12小时用手机运行，可以节省不少电费 ^V^。
 
 **怎么部署到手机**？有些许困难。我简单叙述下我部署的经历。
@@ -59,11 +58,12 @@ python index.py
 
 好在我的老妈还有一部闲置的安卓机，于是我开发了一个安卓版的爬虫程序，我起名叫 Android-Spider，这样用 Android-Spider 替代了 puppeteer，成功解决问题。
 
-随后，我想将python程序植入安卓，想通过 Termux 来实现，但是这个安卓机系统只有 Android 4.4（我尝试刷机，但是不知为何就是无法电脑识别手机，所以无法BL解锁，官方卡刷包又最高只是Android 4.4，真是几经波折啊） 不支持多窗口，所以我无法同时运行 Termux 和 Android-Spider。
+随后，我想将python程序植入安卓，想通过 Termux 来实现，但是这个安卓机系统只有 Android 4.4（我尝试刷机，但是不知为何就是无法电脑识别手机，所以无法BL解锁，官方卡刷包又最高只是Android 4.4，真是几经波折啊） 不支持多窗口，所以我无法同时运行 Termux 和 Android-Spider。当然可以后台运行 Termux，Android-Spider 是必须前台运行，我看了下 Termux 目前要求 Android 5 以上，同时不确定 Termux 在后台是否稳定，所以放弃了该方案。
 
 所以我想到直接以系统进程在Android机的linux层运行python程序。Android手机一般是 arm 架构，所以需要进行交叉编译python，幸运的是有人提供了编译好了的 arm版的python，虽然我只找到 python 3.2，但是足够了。
 
 我通过adb将python在Android手机底层运行了起来，但新的问题是我需要将flask库移植过来，好吧，新问题又出现了，折腾了很久，由于提供的arm版python3.2是精简版导致我安装不上flask，缺少一些c库，那么我需要自己交叉编译，但是这需要折腾好久，所以我放弃了。
 
-最终，我用iphone运行python，Android手机运行Android-Spider，支撑起了整个项目，给大家看看效果吧：
-![](./md_data/e.jpg)
+最终，我用iphone运行python，Android手机运行Android-Spider，支撑起了整个项目。
+
+如果你有一部 Android 5 以上的闲置手机，那么可以通过 Termux 和 Android-Spider 将项目运行在一部手机上。

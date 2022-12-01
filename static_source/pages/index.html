@@ -1,0 +1,98 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="applicable-device" content="pc,mobile"> <!-- 设置头信息 -->
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <link rel="stylesheet" type="text/css" href="/static/js/vant.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/comn.css">
+</head>
+
+
+<body style="width: 100vw; height: 100vh;overflow:hidden; padding: 0; margin: 0; font-size: 22px;">
+    <div id="app" style="width: 100%; height: 100%;">
+
+
+        <!-- 主体功能部位 -->
+        <div id="essaymain"
+            style="width: 100%; height: 100%; display: flex; flex-direction: column; position: absolute; left: 0; top:0;">
+            <!-- 单词列表 -->
+            <div id="essayContainer"
+                style="overflow: hidden; flex-grow: 1; width: 100%; display: flex; flex-direction: column;">
+                <div id="essay" style="padding: 0 18px; overflow: scroll;">
+                    请等待...
+                </div>
+            </div>
+            <div style="display: flex; flex-shrink: 0; font-size: 12px;">
+                <button style="flex-grow: 1; height: 50px;" @click="showWordMeans()">翻译选中单词</button>
+                <button style="flex-grow: 1; height: 50px;" @click="changeEssay()">切换文章</button>
+                <button style="flex-grow: 1; height: 50px;" @click="tiktokcomments()">News</button>
+                <!-- <button style="flex-grow: 1; height: 50px;" onclick="fullScreen()">full</button> -->
+                <button style="flex-grow: 1; height: 50px;" @click="fast_seek()">复习单词</button>
+                <button style="flex-grow: 1; height: 50px;" @click="collectSen()">收藏选中的句子</button>
+                <button style="flex-grow: 1; height: 50px;" @click="showQueriedWords()">复习此文的单词</button>
+                <button style="flex-grow: 1; height: 50px;" @click="doubleLang()">双语</button>
+            </div>
+        </div>
+
+
+        <!-- 主体功能部位 -->
+        <div id="fast_seekcc" style="width: 100%; height: 100%; display: flex; height: calc(100% - 51px);
+            flex-direction: column; display: none; position: absolute; left: 0; top:0; background: white;">
+            <!-- 单词列表 -->
+            <div id="reciteWord"
+                style="overflow: hidden; flex-grow: 1; width: 100%; height: 100%; display: flex; flex-direction: column;">
+
+                <div id="wordListContainer"
+                    style="flex-grow: 1; overflow: hidden; overflow-y: scroll; padding-left: 10px; padding-right: 10px;">
+                    未加载完毕，请等待！
+                </div>
+                <div style="display: flex; height: 58px; font-size: 12px;">
+                    <button style="width: 67px; font-size: 16px;" @click="deletew()">删除</button>
+                    <button style="flex-grow: 1" @click="playaudio = !playaudio; toast(playaudio)">自动读单词</button>
+                    <button style="flex-grow: 1" @click="defaultshow = !defaultshow; toast(defaultshow)">切换自动显示单词</button>
+                    <button style="flex-grow: 1" onclick="folll.style.display = '';">展示当前单词</button>
+                    <button style="flex-grow: 1" @click="nextWord()">切换到下一个单词</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主体功能部位 -->
+        <div id="twittercon" style="width: 100%; height: 100%; display: flex; height: calc(100% - 51px); overflow: hidden;
+         flex-direction: column; display: none; position: absolute; left: 0; top:0; background: white;">
+            <div style="flex-grow: 1; overflow: hidden; overflow-y: scroll;">
+                <ul id="tik_comments" style="padding-left: 14px">
+                    选择一个新闻源以查看...
+                </ul>
+                <div style="height: 20vh"></div>
+            </div>
+            <div style="display: flex; height: 36px; width:100%; font-size: 12px;">
+                <button style="flex-grow: 1" id="tik_tarns">双语</button>
+                <button style="flex-grow: 1" id="tik_refresh">Nature</button>
+                <button style="flex-grow: 1" id="tik_refresh_twitter">暂时未开发</button>
+            </div>
+        </div>
+
+
+        <!-- 主体功能部位 -->
+        <div id="ci_contain" style="width: 100%; height: 100%; display: flex; height: calc(100% - 51px); overflow: hidden;
+         flex-direction: column; display: none; position: absolute; left: 0; top:0; background: white;">
+            <div style="flex-grow: 1; overflow: hidden; overflow-y: scroll;">
+                <div id="ci_contain_list"></div>
+                <div style="height: 20vh"></div>
+            </div>
+            <div style="display: flex; height: 36px; width:100%;">
+                <button style="font-size: 16px; flex-grow: 1" id="ci_danci">单词</button>
+                <button style="font-size: 16px; flex-grow: 1" id="ci_juzi">句子</button>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+
+<script type="text/javascript" src="/static/pages/index.js"></script>

@@ -1,0 +1,112 @@
+::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 5px;
+    /*高宽分别对应横竖滚动条的尺寸*/
+    height: 10px;
+}
+::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.2);
+    background: gray;
+}
+::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    /* -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2); */
+    border-radius: 1px;
+    background: #fff;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
+#app {
+    height: 100%;
+    width: 100%;
+}
+
+.el-tabs__content {
+    height: 100%;
+    width: 100%;
+}
+
+.el-tab-pane {
+    height: 100%;
+    width: 100%;
+}
+
+.queryw {
+    margin-bottom: 12px;
+    border-bottom: 1px dotted black;
+    padding-bottom: 15px;
+}
+
+.chi {
+    white-space: nowrap;
+    margin-top: 6px;
+    margin-left: 22px;
+}
+
+.noScrollBar::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 0px;
+    /*高宽分别对应横竖滚动条的尺寸*/
+    height: 0px;
+}
+
+.noScrollBar {
+    scrollbar-width: none;
+}
+
+.senses_multiple,
+.sense_single ol {
+    display: block;
+    list-style-type: decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.senses_multiple,
+.sense_single li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    margin-left: 34px;
+    list-style: decimal;
+    margin-top: 10px;
+}
+
+ul.examples li {
+    list-style: circle;
+}
+
+.idioms {
+    margin-left: 10px;
+}
+
+.box_title {
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    font-size: 1.125rem;
+    cursor: pointer;
+    -webkit-transition: background-color 100ms linear;
+    -o-transition: background-color 100ms linear;
+    transition: background-color 100ms linear;
+}
+
+.box_title {
+    display: block;
+}
+
+.cf {
+    font-weight: bold;
+    text-decoration: underline;
+}

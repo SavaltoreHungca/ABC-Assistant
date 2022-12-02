@@ -11,7 +11,12 @@ app.all('*', function (req, res, next) {
     next();
 });
 
-
+process.on('uncaughtException', function (err) { 
+    //打印出错误 
+    console.log(err); 
+    //打印出错误的调用栈方便调试 
+    console.log(err.stack);
+});
 
 (async () => {
     const browser = await puppeteer.launch({
@@ -193,7 +198,9 @@ app.all('*', function (req, res, next) {
         }
 
         let nature = async () => {
-            await tikPage.goto("https://www.nature.com/news");
+            tikPage.goto("https://www.nature.com/news");
+            await tikPage.waitForSelector('.c-card__copy');
+            await tikPage.waitForTimeout(2000);
             try {
                 ans = ans.concat(await tikPage.evaluate(() => {
                     let a = document.querySelectorAll('.c-card__copy');

@@ -362,7 +362,7 @@ window.vueapp = new Vue({
 
                     let h = ``;
 
-                    h += `<ul style="display: flex;">`;
+                    h += `<ul style="display: flex; flex-wrap: wrap;">`;
                     list.forEach(i => {
                         h += `<li onclick="vueapp.showWordMeans(\`${i}\`, null, true)" style="margin-left: 30px;">${i}</li>`;
                     });

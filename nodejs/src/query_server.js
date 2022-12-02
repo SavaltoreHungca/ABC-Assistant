@@ -20,7 +20,7 @@ app.all('*', function (req, res, next) {
         args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
     const browser2 = await puppeteer.launch({
-        headless: false,
+        headless: true,
         'devtools': false, // 是否开启控制台
         // 'executablePath': 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
         args: [

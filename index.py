@@ -1,5 +1,5 @@
-webview_server_ip = 'http://192.168.0.181:8112/spider'
-# webview_server_ip = ''
+# webview_server_ip = 'http://192.168.0.181:8112/spider'
+webview_server_ip = ''
 
 import requests
 from flask import Flask, request, jsonify, make_response, send_from_directory, send_file

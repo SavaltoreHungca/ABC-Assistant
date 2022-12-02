@@ -1,4 +1,5 @@
 webview_server_ip = 'http://192.168.0.181:8112/spider'
+# webview_server_ip = ''
 
 import requests
 from flask import Flask, request, jsonify, make_response, send_from_directory, send_file
@@ -826,41 +827,44 @@ def tiktokcommentsapi():
     if twitter:
         rsp = requests.get('http://localhost:4033/tiktokcomments2', timeout=20)
     else:
-        f = """
-        function () {
-            var a = document.querySelectorAll('.c-card__copy');
-            var ans = [];
-            for (var i = 0; i < a.length; i++) {
-                var child = a[i];
-                var t = function (s) {
-                    try {
-                        var r = child.querySelector(s).innerText.trim();
-                        if (r) {
-                            if (r[r.length - 1] === '.') {
-                                return r + ' ';
+        if webview_server_ip:
+            f = """
+            function () {
+                var a = document.querySelectorAll('.c-card__copy');
+                var ans = [];
+                for (var i = 0; i < a.length; i++) {
+                    var child = a[i];
+                    var t = function (s) {
+                        try {
+                            var r = child.querySelector(s).innerText.trim();
+                            if (r) {
+                                if (r[r.length - 1] === '.') {
+                                    return r + ' ';
+                                } else {
+                                    return r + '. ';
+                                };
                             } else {
-                                return r + '. ';
+                                return '';
                             };
-                        } else {
+                        } catch (e) {
                             return '';
                         };
-                    } catch (e) {
-                        return '';
                     };
+                    ans.push('' + t('.c-card__article-type') + t('.c-card__title') + t('.c-card__standfirst'));
                 };
-                ans.push('' + t('.c-card__article-type') + t('.c-card__title') + t('.c-card__standfirst'));
-            };
-            return JSON.stringify(ans);
-        }
-        """
-        rsp = requests.post(webview_server_ip, data=json.dumps({
-            "pageId": "tiktokcomments_nature",
-            "requestUrl": "https://www.nature.com/news",
-            "needRefresh": "",
-            "finishLoadTag": ".c-card__copy",
-            "function": f,
-            "asyncWay": "",
-        }), timeout=20)
+                return JSON.stringify(ans);
+            }
+            """
+            rsp = requests.post(webview_server_ip, data=json.dumps({
+                "pageId": "tiktokcomments_nature",
+                "requestUrl": "https://www.nature.com/news",
+                "needRefresh": "",
+                "finishLoadTag": ".c-card__copy",
+                "function": f,
+                "asyncWay": "",
+            }), timeout=20)
+        else:
+            rsp = requests.get('http://localhost:4033/tiktokcomments')
 
     return ok(rsp.text)
 

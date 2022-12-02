@@ -19,17 +19,19 @@ app.all('*', function (req, res, next) {
         'devtools': false, // 是否开启控制台
         args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
-    const browser2 = await puppeteer.launch({
-        headless: true,
-        'devtools': false, // 是否开启控制台
-        // 'executablePath': 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
-        args: [
-            "--no-sandbox",
-            "--disable-setuid-sandbox",
-            // '--load-extension=C:\\Users\\oem\\AppData\\Local\\Google\\Chrome\\User\ Data\\Default\\Extensions\\eimadpbcbfnmbkopoojfekhnkhdbieeh\\4.9.58_0',
-            // '--disable-extensions-except=C:\\Users\\oem\\AppData\\Local\\Google\\Chrome\\User\ Data\\Default\\Extensions\\eimadpbcbfnmbkopoojfekhnkhdbieeh\\4.9.58_0',
-        ],
-    });
+    let browser2;
+
+//    browser2 = await puppeteer.launch({
+//        headless: false,
+//        'devtools': false, // 是否开启控制台
+//        // 'executablePath': 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+//        args: [
+//            "--no-sandbox",
+//            "--disable-setuid-sandbox",
+//            // '--load-extension=C:\\Users\\oem\\AppData\\Local\\Google\\Chrome\\User\ Data\\Default\\Extensions\\eimadpbcbfnmbkopoojfekhnkhdbieeh\\4.9.58_0',
+//            // '--disable-extensions-except=C:\\Users\\oem\\AppData\\Local\\Google\\Chrome\\User\ Data\\Default\\Extensions\\eimadpbcbfnmbkopoojfekhnkhdbieeh\\4.9.58_0',
+//        ],
+//    });
 
 
     let page = (await browser.pages())[0];
@@ -261,7 +263,7 @@ app.all('*', function (req, res, next) {
         }
 
         await nature();
-        await guardianView();
+//        await guardianView();
 
         res.json(ans);
     });
